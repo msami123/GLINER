@@ -1,0 +1,39 @@
+{
+  "train": {
+    "file": "data/train.jsonl",
+    "examples": 6563,
+    "spans": 7603,
+    "labels": {
+      "classification_signal": 7603
+    },
+    "min_tokens": 1,
+    "max_tokens": 85,
+    "average_tokens": 18.51,
+    "duplicates": 0
+  },
+  "validation": {
+    "file": "data/validation.jsonl",
+    "examples": 820,
+    "spans": 946,
+    "labels": {
+      "classification_signal": 946
+    },
+    "min_tokens": 1,
+    "max_tokens": 82,
+    "average_tokens": 18.65,
+    "duplicates": 0
+  },
+  "test": {
+    "file": "data/test.jsonl",
+    "examples": 820,
+    "spans": 948,
+    "labels": {
+      "classification_signal": 948
+    },
+    "min_tokens": 1,
+    "max_tokens": 77,
+    "average_tokens": 18.12,
+    "duplicates": 0
+  },
+  "split_overlap": 0
+}

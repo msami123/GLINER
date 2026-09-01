@@ -1,0 +1,623 @@
+{
+  "input": "/Users/anody/Downloads/سين تربيع/projects/categorization_engine_on_riyalk/categorization-engine/20715-prod-result.json",
+  "label": "classification_signal",
+  "seed": 42,
+  "source_rows": 20676,
+  "prepared_before_diversity_filter": 9401,
+  "removed": {
+    "no_reliable_signal": 7020,
+    "empty_text": 786,
+    "exact_duplicate_rows_merged": 3469,
+    "near_duplicate_template_cap": 1197
+  },
+  "diversity_settings": {
+    "max_per_template_bank": 5,
+    "max_per_signal_bank": 100
+  },
+  "all": {
+    "examples": 8204,
+    "signals": 9498,
+    "unique_signals": 4773,
+    "banks": {
+      "1": 1271,
+      "11": 5,
+      "13": 59,
+      "3": 411,
+      "4": 2412,
+      "5": 3962,
+      "6": 50,
+      "7": 34
+    },
+    "signal_sources": {
+      "MerchantName": 6550,
+      "bank4_text_filter": 1154,
+      "merchant_name_en": 945,
+      "engine_action": 640,
+      "bank3_text_filter": 588,
+      "merchant_used": 499,
+      "engine_matched_keyword": 384,
+      "engine_context_rule": 257,
+      "transfer_purpose": 119,
+      "bank6_text_filter": 41,
+      "merchant_name_ar": 33,
+      "bank11_short_description": 5
+    },
+    "top_signals": [
+      [
+        "payroll",
+        134
+      ],
+      [
+        "uber",
+        113
+      ],
+      [
+        "حوالة صادرة",
+        97
+      ],
+      [
+        "تحويل الى الاهل والاصدقاء",
+        91
+      ],
+      [
+        "التحويل الوارد",
+        85
+      ],
+      [
+        "aldrees",
+        78
+      ],
+      [
+        "حوالة داخلية",
+        77
+      ],
+      [
+        "tamara",
+        53
+      ],
+      [
+        "internal transfer",
+        47
+      ],
+      [
+        "bill payment",
+        46
+      ],
+      [
+        "dunkin",
+        35
+      ],
+      [
+        "barq",
+        35
+      ],
+      [
+        "keeta",
+        31
+      ],
+      [
+        "aldawaa pharmacy",
+        30
+      ],
+      [
+        "cash withdrawal",
+        29
+      ],
+      [
+        "ehsan",
+        27
+      ],
+      [
+        "coffee address",
+        26
+      ],
+      [
+        "tabby",
+        25
+      ],
+      [
+        "kyan for marketing",
+        24
+      ],
+      [
+        "stc bank",
+        24
+      ],
+      [
+        "wagf thooq for fast fo",
+        24
+      ],
+      [
+        "mobily",
+        23
+      ],
+      [
+        "traffic",
+        23
+      ],
+      [
+        "alinmapay",
+        23
+      ],
+      [
+        "panda",
+        22
+      ],
+      [
+        "al hatab bakery",
+        22
+      ],
+      [
+        "khdwat mstmara est",
+        22
+      ],
+      [
+        "tim hortons",
+        21
+      ],
+      [
+        "bahi restaurant",
+        19
+      ],
+      [
+        "cash deposit",
+        19
+      ]
+    ]
+  },
+  "splits": {
+    "train": {
+      "examples": 6564,
+      "signals": 7604,
+      "unique_signals": 4032,
+      "banks": {
+        "1": 1017,
+        "11": 3,
+        "13": 47,
+        "3": 329,
+        "4": 1930,
+        "5": 3170,
+        "6": 40,
+        "7": 28
+      },
+      "signal_sources": {
+        "MerchantName": 5220,
+        "bank4_text_filter": 960,
+        "merchant_name_en": 772,
+        "engine_action": 512,
+        "bank3_text_filter": 458,
+        "merchant_used": 412,
+        "engine_matched_keyword": 295,
+        "engine_context_rule": 211,
+        "transfer_purpose": 95,
+        "bank6_text_filter": 34,
+        "merchant_name_ar": 28,
+        "bank11_short_description": 3
+      },
+      "top_signals": [
+        [
+          "payroll",
+          100
+        ],
+        [
+          "uber",
+          88
+        ],
+        [
+          "حوالة صادرة",
+          84
+        ],
+        [
+          "تحويل الى الاهل والاصدقاء",
+          76
+        ],
+        [
+          "التحويل الوارد",
+          68
+        ],
+        [
+          "aldrees",
+          65
+        ],
+        [
+          "حوالة داخلية",
+          62
+        ],
+        [
+          "tamara",
+          40
+        ],
+        [
+          "bill payment",
+          38
+        ],
+        [
+          "internal transfer",
+          37
+        ],
+        [
+          "dunkin",
+          30
+        ],
+        [
+          "keeta",
+          29
+        ],
+        [
+          "barq",
+          29
+        ],
+        [
+          "tabby",
+          23
+        ],
+        [
+          "aldawaa pharmacy",
+          22
+        ],
+        [
+          "cash withdrawal",
+          22
+        ],
+        [
+          "ehsan",
+          21
+        ],
+        [
+          "wagf thooq for fast fo",
+          21
+        ],
+        [
+          "stc bank",
+          21
+        ],
+        [
+          "al hatab bakery",
+          19
+        ],
+        [
+          "coffee address",
+          19
+        ],
+        [
+          "kyan for marketing",
+          19
+        ],
+        [
+          "cash deposit",
+          18
+        ],
+        [
+          "panda",
+          18
+        ],
+        [
+          "tim hortons",
+          18
+        ],
+        [
+          "traffic",
+          17
+        ],
+        [
+          "mobily",
+          17
+        ],
+        [
+          "bahi restaurant",
+          17
+        ],
+        [
+          "jarir bookstore",
+          17
+        ],
+        [
+          "loop",
+          16
+        ]
+      ]
+    },
+    "validation": {
+      "examples": 820,
+      "signals": 946,
+      "unique_signals": 705,
+      "banks": {
+        "1": 127,
+        "11": 1,
+        "13": 6,
+        "3": 41,
+        "4": 241,
+        "5": 396,
+        "6": 5,
+        "7": 3
+      },
+      "signal_sources": {
+        "MerchantName": 673,
+        "bank4_text_filter": 92,
+        "merchant_name_en": 81,
+        "bank3_text_filter": 72,
+        "engine_action": 65,
+        "merchant_used": 36,
+        "engine_matched_keyword": 34,
+        "engine_context_rule": 19,
+        "transfer_purpose": 10,
+        "merchant_name_ar": 3,
+        "bank6_text_filter": 3,
+        "bank11_short_description": 1
+      },
+      "top_signals": [
+        [
+          "payroll",
+          16
+        ],
+        [
+          "حوالة صادرة",
+          9
+        ],
+        [
+          "uber",
+          9
+        ],
+        [
+          "حوالة داخلية",
+          8
+        ],
+        [
+          "التحويل الوارد",
+          6
+        ],
+        [
+          "aldrees",
+          6
+        ],
+        [
+          "aldawaa pharmacy",
+          6
+        ],
+        [
+          "tamara",
+          6
+        ],
+        [
+          "تحويل الى الاهل والاصدقاء",
+          6
+        ],
+        [
+          "internal transfer",
+          5
+        ],
+        [
+          "barq",
+          5
+        ],
+        [
+          "sharikat khayal aljanu",
+          4
+        ],
+        [
+          "bill payment",
+          4
+        ],
+        [
+          "traffic",
+          4
+        ],
+        [
+          "alinmapay",
+          4
+        ],
+        [
+          "rstation",
+          4
+        ],
+        [
+          "panda",
+          4
+        ],
+        [
+          "al safa food",
+          4
+        ],
+        [
+          "abdulkarim boqasem est",
+          4
+        ],
+        [
+          "basket suppl",
+          4
+        ],
+        [
+          "mobily",
+          4
+        ],
+        [
+          "test stars fo",
+          4
+        ],
+        [
+          "cash withdrawal",
+          3
+        ],
+        [
+          "seven grams coffee",
+          3
+        ],
+        [
+          "ehsan",
+          3
+        ],
+        [
+          "coffee address",
+          3
+        ],
+        [
+          "liter co",
+          3
+        ],
+        [
+          "ehsan platform",
+          3
+        ],
+        [
+          "keemart",
+          3
+        ],
+        [
+          "b saihat rest",
+          2
+        ]
+      ]
+    },
+    "test": {
+      "examples": 820,
+      "signals": 948,
+      "unique_signals": 686,
+      "banks": {
+        "1": 127,
+        "11": 1,
+        "13": 6,
+        "3": 41,
+        "4": 241,
+        "5": 396,
+        "6": 5,
+        "7": 3
+      },
+      "signal_sources": {
+        "MerchantName": 657,
+        "bank4_text_filter": 102,
+        "merchant_name_en": 92,
+        "engine_action": 63,
+        "bank3_text_filter": 58,
+        "engine_matched_keyword": 55,
+        "merchant_used": 51,
+        "engine_context_rule": 27,
+        "transfer_purpose": 14,
+        "bank6_text_filter": 4,
+        "merchant_name_ar": 2,
+        "bank11_short_description": 1
+      },
+      "top_signals": [
+        [
+          "payroll",
+          18
+        ],
+        [
+          "uber",
+          16
+        ],
+        [
+          "التحويل الوارد",
+          11
+        ],
+        [
+          "تحويل الى الاهل والاصدقاء",
+          9
+        ],
+        [
+          "aldrees",
+          7
+        ],
+        [
+          "tamara",
+          7
+        ],
+        [
+          "حوالة داخلية",
+          7
+        ],
+        [
+          "khdwat mstmara est",
+          6
+        ],
+        [
+          "hanan alhumere est",
+          6
+        ],
+        [
+          "internal transfer",
+          5
+        ],
+        [
+          "السحب",
+          5
+        ],
+        [
+          "hungerstation",
+          5
+        ],
+        [
+          "cafe",
+          4
+        ],
+        [
+          "cash withdrawal",
+          4
+        ],
+        [
+          "naft services company",
+          4
+        ],
+        [
+          "coffee address",
+          4
+        ],
+        [
+          "حوالة صادرة",
+          4
+        ],
+        [
+          "best gym sports center",
+          4
+        ],
+        [
+          "t al modhesh",
+          4
+        ],
+        [
+          "bill payment",
+          4
+        ],
+        [
+          "aisha ali al-abd saghe",
+          4
+        ],
+        [
+          "ank",
+          4
+        ],
+        [
+          "company massar nazam a",
+          4
+        ],
+        [
+          "and safa mar",
+          4
+        ],
+        [
+          "discounted food saving",
+          4
+        ],
+        [
+          "h jibal sanaa",
+          4
+        ],
+        [
+          "الدريس",
+          3
+        ],
+        [
+          "ehsan",
+          3
+        ],
+        [
+          "al hatab bakery",
+          3
+        ],
+        [
+          "alinmapay",
+          3
+        ]
+      ]
+    }
+  }
+}

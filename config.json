@@ -1,0 +1,36 @@
+{
+  "model_name": "urchade/gliner_multi-v2.1",
+  "label": "classification_signal",
+  "data": {
+    "train": "data/train.jsonl",
+    "validation": "data/validation.jsonl",
+    "test": "data/test.jsonl"
+  },
+  "output_dir": "models/classification-signal-v1",
+  "training": {
+    "max_steps": 3000,
+    "train_batch_size": 4,
+    "eval_batch_size": 4,
+    "learning_rate": 1e-5,
+    "others_lr": 5e-5,
+    "weight_decay": 0.01,
+    "others_weight_decay": 0.01,
+    "max_grad_norm": 1.0,
+    "scheduler_type": "cosine",
+    "warmup_steps": 150,
+    "focal_loss_alpha": 0.75,
+    "focal_loss_gamma": 2.0,
+    "focal_loss_prob_margin": 0.0,
+    "loss_reduction": "sum",
+    "negatives": 1.0,
+    "masking": "global",
+    "save_steps": 250,
+    "logging_steps": 25,
+    "save_total_limit": 3,
+    "bf16": true
+  },
+  "evaluation": {
+    "threshold": 0.5
+  }
+}
+
