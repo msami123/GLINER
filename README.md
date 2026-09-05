@@ -1,114 +1,63 @@
-# GLiNER — Classification Signal Extractor
+# GLiNER — فلتر إشارات التصنيف
 
-مشروع مستقل لتدريب نموذج GLiNER على نص `issue` فقط. الهدف أن يستخرج النموذج الجزء المفيد للتصنيف مثل اسم النشاط أو نوع العملية، ويتجاهل إشارات الدفع العامة مثل `Apple Pay` و`MADA` و`ATM` عندما لا تكون هي الإشارة التصنيفية المطلوبة.
+المدخل: **نص `issue` فقط**. المخرج: اسم تاجر/نشاط أو إجراء مالي ظاهر في النص، مثل `Cash Withdrawal`. يتعلم تجاهل `Apple Pay` و`MADA` و`ATM` كقنوات دفع. هذا المشروع لا يدرب مصنف المصروفات حاليًا.
 
-## محتويات المشروع
+ابدأ من [PC_HANDOFF.md](PC_HANDOFF.md): ملخص المحادثة، ما تغير، خطة العمل، وخطوات PC والاستئناف.
 
-- `data/train.jsonl`: عدد 6,563 سجلًا فريدًا للتدريب (أزيل تكرار مطابق واحد).
-- `data/validation.jsonl`: عدد 820 سجلًا لضبط النموذج والـ threshold.
-- `data/test.jsonl`: عدد 820 سجلًا للاختبار النهائي مرة واحدة.
-- `data/all.jsonl`: جميع الأمثلة، للرجوع والمراجعة فقط وليس للتدريب المباشر.
-- `data/audit.jsonl`: تفاصيل التدقيق ومصدر كل مثال، وليس مدخلًا للتدريب.
-- `config.json`: إعدادات النموذج والتدريب.
-- `train.py`: التدريب وحفظ checkpoint كل 250 خطوة.
-- `evaluate.py`: حساب Precision وRecall وF1 على validation أو test.
-- `predict.py`: تجربة نص issue حقيقي بعد التدريب.
-- `validate_data.py`: فحص الصيغة، الحدود، التكرار، وتسرب الأمثلة بين التقسيمات.
-- `check_environment.py`: التأكد من رؤية PyTorch لكرت NVIDIA وBF16.
+## النسخة الجاهزة
 
-صيغة السجل التدريبي:
+| القسم | عدد الأمثلة | أمثلة هدفها فارغ |
+|---|---:|---:|
+| التدريب | 11,606 | 414 |
+| التحقق | 1,468 | 77 |
+| الاختبار | 1,471 | 54 |
+| فحص sanity منفصل | 20 | 3 |
+
+البيانات الجديدة في `data/v2/`. المجموع الأساسي 14,545، إضافة إلى 20 حالة sanity و1,500 حالة غير معلّمة للمراجعة. مررنا على 387,408 issue وعلى 20,676 صفًا مفصلًا؛ لم نحول كل البيانات إلى تعليقات آلية غير موثوقة. راجع [سياسة التعليق](ANNOTATION_POLICY.md) و[إحصاءات المصدر](data/v2/summary.json).
+
+أمثلة حقيقية:
 
 ```json
-{"tokenized_text": ["POS", "PURCHASE", "AT", "ALBAIK"], "ner": [[3, 3, "classification_signal"]]}
+{"issue":"Online Purchase from Mcdonalds Riyadh Mada Riyadh","signals":["Mcdonalds"]}
+{"issue":"ATM Cash Withdrawal","signals":["Cash Withdrawal"]}
+{"issue":"CITY:DAMMAM مدى:**9434 11588850 DAMMAM","signals":[]}
 ```
 
-الرقمان داخل `ner` هما بداية ونهاية الإشارة داخل قائمة الكلمات، والنهاية مشمولة.
+`signals` أعلاه شرح للمطلوب، وليست مخرجات موديل مدرّب. التمثيل الذي يقرأه تدريب GLiNER للمثال الثاني:
 
-## التشغيل على PC بنظام Windows
-
-الطريقة الأنظف هي WSL2 مع Ubuntu. ثبّت أحدث تعريف NVIDIA في Windows، ثم افتح Ubuntu داخل WSL ونفّذ:
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd YOUR_REPOSITORY_FOLDER
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+```json
+{"tokenized_text":["ATM","Cash","Withdrawal"],"ner":[[1,2,"classification_signal"]],"ner_labels":["classification_signal"]}
 ```
 
-لرفع المشروع أولًا إلى GitHub من جهازك الحالي، أنشئ مستودعًا فارغًا ثم نفّذ من داخل هذا المجلد:
+نوع واحد فقط مطلوب داخليًا لتعليم موضع المقاطع. لا تحتاج لتمرير بنك أو مبلغ أو اسم تاجر وقت الاستخدام.
 
-```bash
-git init
-git add .
-git commit -m "Initial GLiNER training project"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPOSITORY_URL
-git push -u origin main
-```
-
-أول تثبيت يحتاج إنترنت لتنزيل GLiNER والنموذج الأساسي. بعده افحص الجهاز والداتا:
+## بعد تجهيز بيئة CUDA كما في ملف التسليم
 
 ```bash
 python check_environment.py
 python validate_data.py
-```
-
-يجب أن يظهر كرت RTX وأن تكون `CUDA available: True`. بعدها ابدأ التدريب:
-
-```bash
+python -m unittest discover -s tests -v
+python evaluate.py --base-model --split validation
+python train.py --smoke-test
 python train.py
 ```
 
-الإعداد الافتراضي مناسب كبداية لـ RTX 4070 Ti Super بسعة 16GB: batch size يساوي 4، وعدد الخطوات 3000، وBF16. إذا ظهر خطأ نفاد ذاكرة، غيّر `train_batch_size` و`eval_batch_size` في `config.json` إلى 2 ثم أعد التشغيل.
+للاستئناف بنفس البيانات والإعدادات:
 
-ستظهر النماذج المحفوظة داخل:
-
-```text
-models/classification-signal-v1/checkpoint-*
+```bash
+python train.py --resume latest
 ```
 
-## التقييم الصحيح
-
-ابدأ بالـ validation:
+للتقييم والتجربة بعد التدريب:
 
 ```bash
 python evaluate.py --split validation
+python evaluate.py --split sanity
+python predict.py "ATM Cash Withdrawal"
 ```
 
-جرّب thresholds مختلفة واختر الأفضل للـ F1 أو حسب تفضيلك بين الدقة والاسترجاع:
+يختار البرنامج أفضل حفظ بحسب F1 على validation بالنص الأصلي. الملفات `models/.../checkpoint-*` تحفظ حالة الاستئناف، و`models/.../best` للاستعمال. لا تدرّب على test ولا تكرر ضبط القرارات عليه.
 
-```bash
-python evaluate.py --split validation --threshold 0.40
-python evaluate.py --split validation --threshold 0.50
-python evaluate.py --split validation --threshold 0.60
-```
+## حدود ما تم التحقق منه
 
-بعد اختيار threshold نهائي، عدّله في `config.json` ثم شغّل الاختبار النهائي مرة واحدة:
-
-```bash
-python evaluate.py --split test
-```
-
-تقارير النتائج والأخطاء تحفظ داخل `reports/`. راجع `mistake_samples` قبل تقرير أن النموذج جاهز.
-
-## تجربة Issue واحد
-
-```bash
-python predict.py "YOUR REAL TRANSACTION ISSUE HERE"
-```
-
-أو حدد checkpoint بنفسك:
-
-```bash
-python predict.py "YOUR ISSUE" --model models/classification-signal-v1/checkpoint-3000
-```
-
-## قواعد مهمة
-
-1. لا تدرّب على `test.jsonl` ولا تستخدمه لاختيار threshold.
-2. لا تستخدم `all.jsonl` مع التقسيمات الثلاثة، لأنه يحتويها جميعًا وسيصنع تسربًا في التقييم.
-3. أفضل checkpoint ليس بالضرورة الأخير؛ قارن نتائج validation بين النقاط المحفوظة.
-4. بعد أول تدريب، راجع الأخطاء يدويًا. تحسين الـ labels الخاطئة أهم من زيادة الخطوات عشوائيًا.
-5. لا ترفع مجلد `models/` إلى GitHub؛ هو مستبعد من Git تلقائيًا لأنه كبير.
+اختبارات تجهيز البيانات، صحة المقاطع، منع التكرار والتداخل اجتازت الفحص محليًا. لم ينفذ تدريب GPU على جهاز PC بعد. معظم التعليقات بقواعد وتحتاج تقييمًا بشريًا مستقلًا قبل الإنتاج؛ لا توجد دقة مضمونة بمجرد زيادة العدد.

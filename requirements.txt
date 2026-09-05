@@ -1,3 +1,6 @@
 gliner[training]==0.2.28
+torch>=2.6,<3
+transformers==4.57.6
+accelerate==1.12.0
+sentencepiece>=0.2,<0.3
 tqdm>=4.66,<5
-

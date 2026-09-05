@@ -1,100 +1,81 @@
+"""Offline validation of raw spans, negative targets and split isolation."""
 from __future__ import annotations
 
 import argparse
-import hashlib
-import json
 from collections import Counter
-from pathlib import Path
 
-from project_utils import PROJECT_ROOT, load_config, load_jsonl, resolve_path, write_json
-
-
-def fingerprint(row: dict) -> str:
-    payload = json.dumps(row, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+from data_contract import LABEL, group_id, sample_id, token_spans
+from project_utils import load_config, load_jsonl, resolve_path, write_json
 
 
-def validate_split(path: Path, expected_label: str) -> tuple[dict, set[str]]:
+def validate_row(row, label=LABEL):
+    text = row['text']
+    assert text.strip(), 'empty input'
+    assert row['sample_id'] == sample_id(text), 'sample hash mismatch'
+    assert row['group_id'] == group_id(text), 'template hash mismatch'
+    assert row['ner_labels'] == [label], 'explicit label required, including negatives'
+    spans = []
+    for entity in row['entities']:
+        start, end = entity['start'], entity['end']
+        assert 0 <= start < end <= len(text), 'invalid character span'
+        assert text[start:end] == entity['text'], 'not an original substring'
+        assert entity['label'] == label, 'unexpected label'
+        spans.append((start, end))
+    assert len(spans) == len(set(spans)), 'duplicate spans'
+    tokens, ner = token_spans(text, spans)
+    assert tokens == row['tokenized_text'], 'GLiNER tokenizer mismatch'
+    assert ner == row['ner'], 'character/token annotation mismatch'
+    assert len(tokens) <= 384, 'input exceeds max_len'
+    assert all(e-s+1 <= 12 for s,e,_ in ner), 'entity exceeds max_width'
+    assert all(a[1] < b[0] for a,b in zip(ner,ner[1:])), 'overlapping spans'
+    if not ner:
+        assert row['annotation_status'] in {'verified_structure_negative','agent_reviewed'}, 'unknown converted to negative'
+    return row
+
+
+def validate_split(path, expected_label=LABEL):
     rows = load_jsonl(path)
-    errors: list[str] = []
-    labels: Counter[str] = Counter()
-    token_lengths: list[int] = []
-    fingerprints: list[str] = []
-    span_count = 0
-
-    for row_number, row in enumerate(rows, start=1):
-        tokens = row.get("tokenized_text")
-        spans = row.get("ner")
-        if not isinstance(tokens, list) or not all(isinstance(token, str) for token in tokens):
-            errors.append(f"row {row_number}: tokenized_text must be a list of strings")
-            continue
-        if not tokens:
-            errors.append(f"row {row_number}: tokenized_text is empty")
-        if not isinstance(spans, list) or not spans:
-            errors.append(f"row {row_number}: ner must contain at least one span")
-            continue
-        token_lengths.append(len(tokens))
-        fingerprints.append(fingerprint(row))
-        for span in spans:
-            span_count += 1
-            if not isinstance(span, list) or len(span) != 3:
-                errors.append(f"row {row_number}: invalid span {span!r}")
-                continue
-            start, end, label = span
-            if not isinstance(start, int) or not isinstance(end, int) or not (0 <= start <= end < len(tokens)):
-                errors.append(f"row {row_number}: span out of bounds {span!r}")
-            if label != expected_label:
-                errors.append(f"row {row_number}: unexpected label {label!r}")
-            labels[str(label)] += 1
-
-    duplicate_count = len(fingerprints) - len(set(fingerprints))
-    if duplicate_count:
-        errors.append(f"{duplicate_count} duplicate rows")
-    if errors:
-        preview = "\n".join(errors[:20])
-        raise ValueError(f"Validation failed for {path}:\n{preview}")
-
-    try:
-        display_path = str(path.relative_to(PROJECT_ROOT))
-    except ValueError:
-        display_path = str(path)
+    if not rows: raise ValueError(f'Empty split: {path}')
+    for index,row in enumerate(rows,1):
+        try: validate_row(row,expected_label)
+        except (AssertionError,KeyError,ValueError,TypeError) as exc:
+            raise ValueError(f'{path} row {index}: {exc}') from exc
+    ids = {r['sample_id'] for r in rows}
+    if len(ids) != len(rows): raise ValueError(f'Duplicate normalized texts in {path}')
     report = {
-        "file": display_path,
-        "examples": len(rows),
-        "spans": span_count,
-        "labels": dict(labels),
-        "min_tokens": min(token_lengths),
-        "max_tokens": max(token_lengths),
-        "average_tokens": round(sum(token_lengths) / len(token_lengths), 2),
-        "duplicates": duplicate_count,
+        'examples':len(rows), 'positive_examples':sum(bool(r['ner']) for r in rows),
+        'negative_examples':sum(not r['ner'] for r in rows),
+        'spans':sum(len(r['ner']) for r in rows), 'duplicates':0,
+        'groups':len({r['group_id'] for r in rows}),
+        'banks':dict(Counter(b for r in rows for b in r['bank_ids'])),
+        'bank_unknown':sum(not r['bank_ids'] for r in rows),
+        'annotation_status':dict(Counter(r['annotation_status'] for r in rows)),
+        'max_tokens':max(len(r['tokenized_text']) for r in rows),
     }
-    return report, set(fingerprints)
+    return report, ids
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Validate all GLiNER training splits.")
-    parser.add_argument("--config", default="config.json")
-    args = parser.parse_args()
-
-    config = load_config(args.config)
-    reports: dict[str, dict] = {}
-    seen: dict[str, set[str]] = {}
-    for split, value in config["data"].items():
-        path = resolve_path(value)
-        reports[split], seen[split] = validate_split(path, config["label"])
-        print(f"OK {split}: {reports[split]['examples']} examples, {reports[split]['spans']} spans")
-
-    split_names = list(seen)
-    for index, left in enumerate(split_names):
-        for right in split_names[index + 1 :]:
-            overlap = seen[left] & seen[right]
-            if overlap:
-                raise ValueError(f"Data leakage: {len(overlap)} identical rows in {left} and {right}")
-
-    reports["split_overlap"] = 0
-    write_json("reports/data_validation.json", reports)
-    print("OK: no duplicate rows and no overlap between train/validation/test")
+def validate_all(config):
+    reports, ids, groups = {}, {}, {}
+    for name,path in config['data'].items():
+        reports[name],ids[name] = validate_split(resolve_path(path),config['label'])
+        groups[name] = {r['group_id'] for r in load_jsonl(path)}
+    for i,left in enumerate(ids):
+        for right in list(ids)[i+1:]:
+            if ids[left] & ids[right]: raise ValueError(f'Exact text leakage: {left}/{right}')
+            if groups[left] & groups[right]: raise ValueError(f'Template leakage: {left}/{right}')
+    reports['exact_text_overlap'] = reports['template_group_overlap'] = 0
+    return reports
 
 
-if __name__ == "__main__":
-    main()
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--config',default='config.json')
+    args=parser.parse_args()
+    report=validate_all(load_config(args.config))
+    write_json('reports/data_validation.json',report)
+    for name,values in report.items(): print(f'{name}: {values}')
+    print('PASS: raw spans valid; no normalized-text or template-group leakage.')
+
+
+if __name__=='__main__': main()

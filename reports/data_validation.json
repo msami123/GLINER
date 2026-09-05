@@ -1,39 +1,103 @@
 {
   "train": {
-    "file": "data/train.jsonl",
-    "examples": 6563,
-    "spans": 7603,
-    "labels": {
-      "classification_signal": 7603
+    "examples": 11606,
+    "positive_examples": 11192,
+    "negative_examples": 414,
+    "spans": 13313,
+    "duplicates": 0,
+    "groups": 8331,
+    "banks": {
+      "4": 1602,
+      "1": 670,
+      "5": 1037,
+      "3": 131,
+      "6": 18,
+      "13": 28,
+      "7": 27,
+      "11": 2
     },
-    "min_tokens": 1,
-    "max_tokens": 85,
-    "average_tokens": 18.51,
-    "duplicates": 0
+    "bank_unknown": 8150,
+    "annotation_status": {
+      "rule_labeled": 10747,
+      "verified_structure_negative": 414,
+      "source_field_labeled": 443,
+      "agent_reviewed": 2
+    },
+    "max_tokens": 90
   },
   "validation": {
-    "file": "data/validation.jsonl",
-    "examples": 820,
-    "spans": 946,
-    "labels": {
-      "classification_signal": 946
+    "examples": 1468,
+    "positive_examples": 1391,
+    "negative_examples": 77,
+    "spans": 1641,
+    "duplicates": 0,
+    "groups": 1045,
+    "banks": {
+      "4": 207,
+      "1": 85,
+      "5": 128,
+      "13": 4,
+      "3": 19,
+      "7": 4,
+      "6": 2,
+      "11": 1
     },
-    "min_tokens": 1,
-    "max_tokens": 82,
-    "average_tokens": 18.65,
-    "duplicates": 0
+    "bank_unknown": 1030,
+    "annotation_status": {
+      "verified_structure_negative": 77,
+      "rule_labeled": 1331,
+      "source_field_labeled": 59,
+      "agent_reviewed": 1
+    },
+    "max_tokens": 86
   },
   "test": {
-    "file": "data/test.jsonl",
-    "examples": 820,
-    "spans": 948,
-    "labels": {
-      "classification_signal": 948
+    "examples": 1471,
+    "positive_examples": 1417,
+    "negative_examples": 54,
+    "spans": 1664,
+    "duplicates": 0,
+    "groups": 1045,
+    "banks": {
+      "5": 128,
+      "1": 85,
+      "7": 3,
+      "11": 1,
+      "4": 208,
+      "6": 2,
+      "13": 4,
+      "3": 20
     },
-    "min_tokens": 1,
-    "max_tokens": 77,
-    "average_tokens": 18.12,
-    "duplicates": 0
+    "bank_unknown": 1029,
+    "annotation_status": {
+      "rule_labeled": 1360,
+      "source_field_labeled": 56,
+      "agent_reviewed": 1,
+      "verified_structure_negative": 54
+    },
+    "max_tokens": 83
   },
-  "split_overlap": 0
+  "sanity": {
+    "examples": 20,
+    "positive_examples": 17,
+    "negative_examples": 3,
+    "spans": 18,
+    "duplicates": 0,
+    "groups": 19,
+    "banks": {
+      "4": 4,
+      "7": 1,
+      "3": 1,
+      "5": 5,
+      "1": 2,
+      "13": 1
+    },
+    "bank_unknown": 7,
+    "annotation_status": {
+      "agent_reviewed": 20
+    },
+    "max_tokens": 23
+  },
+  "exact_text_overlap": 0,
+  "template_group_overlap": 0
 }

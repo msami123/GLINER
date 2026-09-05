@@ -10,7 +10,7 @@ def main() -> None:
     try:
         import torch
     except ImportError:
-        raise SystemExit("PyTorch is not installed. Run: pip install -r requirements.txt")
+        raise SystemExit("Install CUDA-enabled PyTorch using the official selector, then requirements.txt. See PC_HANDOFF.md.")
 
     print(f"PyTorch: {torch.__version__}")
     print(f"CUDA available: {torch.cuda.is_available()}")
@@ -26,4 +26,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

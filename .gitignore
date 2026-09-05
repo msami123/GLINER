@@ -1,4 +1,9 @@
 .venv/
+.env
+.env.*
+*.pem
+Big Data for Training.jsonl
+20715-prod-result.json
 __pycache__/
 *.py[cod]
 .pytest_cache/
@@ -9,4 +14,5 @@ models/*
 reports/*
 !reports/.gitkeep
 !reports/data_validation.json
+!reports/build_verification.json
 wandb/

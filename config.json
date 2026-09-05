@@ -2,14 +2,17 @@
   "model_name": "urchade/gliner_multi-v2.1",
   "label": "classification_signal",
   "data": {
-    "train": "data/train.jsonl",
-    "validation": "data/validation.jsonl",
-    "test": "data/test.jsonl"
+    "train": "data/v2/train.jsonl",
+    "validation": "data/v2/validation.jsonl",
+    "test": "data/v2/test.jsonl",
+    "sanity": "data/v2/sanity.jsonl"
   },
-  "output_dir": "models/classification-signal-v1",
+  "output_dir": "models/classification-signal-v2",
   "training": {
     "max_steps": 3000,
-    "train_batch_size": 4,
+    "seed": 42,
+    "gradient_accumulation_steps": 4,
+    "train_batch_size": 2,
     "eval_batch_size": 4,
     "learning_rate": 1e-5,
     "others_lr": 5e-5,
@@ -30,7 +33,7 @@
     "bf16": true
   },
   "evaluation": {
-    "threshold": 0.5
+    "threshold": 0.5,
+    "batch_size": 4
   }
 }
-

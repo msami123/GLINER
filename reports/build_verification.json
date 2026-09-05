@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "identical_full_rebuild": true,
+  "files": {
+    "review_queue.jsonl": {
+      "sha256": "ba10aaced99f2f5e1497eb85a19df726a5012aa8d56c2f5b3d5212c292dae92a",
+      "bytes": 498480
+    },
+    "sanity.jsonl": {
+      "sha256": "075bd30ff1d47d89c4224f11d0fe28be34e5d38c54d4df8e314f38b1b4fd55cb",
+      "bytes": 12700
+    },
+    "summary.json": {
+      "sha256": "57177dbe3d1ec8412d6535777373848e8e3abb7930718d68f7905cb2e533741c",
+      "bytes": 5977
+    },
+    "test.jsonl": {
+      "sha256": "f232f3edf167b054c53c108f6919e8bbd097aca1dbe2c53b58900b1fdf8fdb97",
+      "bytes": 1146193
+    },
+    "train.jsonl": {
+      "sha256": "2c8e47abe7a3bbd404b831e923f2e3b0f1a512f79d388fe2913a8e5df2727baa",
+      "bytes": 9190535
+    },
+    "validation.jsonl": {
+      "sha256": "919c7750312eeb05ed8d6e19f7e2352a489212caee043250cf293c8933eb6e61",
+      "bytes": 1146764
+    }
+  },
+  "gpu_training_performed": false
+}

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -43,8 +44,6 @@ def write_json(path: str | Path, value: Any) -> None:
 
 def latest_checkpoint(output_dir: str | Path) -> Path:
     root = resolve_path(output_dir)
-    if (root / "config.json").exists():
-        return root
     checkpoints = []
     for path in root.glob("checkpoint-*"):
         try:
@@ -60,6 +59,20 @@ def latest_checkpoint(output_dir: str | Path) -> Path:
     return max(checkpoints, key=lambda item: item[0])[1]
 
 
+def best_model(output_dir: str | Path) -> Path:
+    root=resolve_path(output_dir)
+    for path in (root/'best',root/'final',root):
+        if (path/'gliner_config.json').exists(): return path
+    return latest_checkpoint(root)
+
+
+def file_hash(path: str | Path) -> str:
+    digest=hashlib.sha256()
+    with resolve_path(path).open('rb') as f:
+        for block in iter(lambda:f.read(1024*1024),b''): digest.update(block)
+    return digest.hexdigest()
+
+
 def tokens_to_text(tokens: Iterable[str]) -> tuple[str, list[tuple[int, int]]]:
     pieces: list[str] = []
     offsets: list[tuple[int, int]] = []
@@ -72,4 +85,3 @@ def tokens_to_text(tokens: Iterable[str]) -> tuple[str, list[tuple[int, int]]]:
         cursor += len(token)
         offsets.append((start, cursor))
     return " ".join(pieces), offsets
-
