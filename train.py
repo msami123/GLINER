@@ -108,7 +108,10 @@ def main():
             was_training=current_model.training
             current_model.eval()
             try:
-                with torch.inference_mode():
+                # Checkpoint RNG is saved before on_save. Inference DataLoader
+                # iteration consumes CPU RNG even without shuffling; preserve it
+                # so validation does not change the training/resume sequence.
+                with torch.random.fork_rng(devices=[torch.cuda.current_device()]), torch.inference_mode():
                     result=score_dataset(current_model,validation_rows,config['label'],
                                          config['evaluation']['threshold'],config['evaluation']['batch_size'])
             finally: current_model.train(was_training)
