@@ -1,0 +1,61 @@
+{
+  "schema_version": "classification_signal_silver_v4",
+  "built_at_utc": "2026-09-23T17:44:03.169627+00:00",
+  "annotation_status": "silver_rule_proposed",
+  "input_file": "/Users/anody/Downloads/سين تربيع/projects/categorization_engine_on_riyalk/categorization-engine/transaction-issues-production-1000.json",
+  "input_sha256": "9d97567fcb51ea962f5aace750617ff1250ed5e9bbee1dfad13ec95db9ad2d27",
+  "input_rows": 390398,
+  "labels": [
+    "classification_signal"
+  ],
+  "internal_audit_types": [
+    "merchant_name",
+    "person_name",
+    "transaction_signal"
+  ],
+  "label_definitions": {
+    "classification_signal": "Exact merchant, directional counterparty, named organization, or standalone category-defining phrase selected by the filter policy."
+  },
+  "tokenizer_regex": "(?<=\\d)TO(?=[A-Za-z])|(?<=\\d)FR(?=[A-Za-z])|[A-Za-z]+|[\\u0600-\\u06FF]+|\\d+|_+|[^\\w\\s]|[^\\W\\d_]+",
+  "ner_end_index": "inclusive_token_index",
+  "audit_end_index": "exclusive_character_index",
+  "seed": 42,
+  "config": {
+    "max_per_group_per_bank": 25,
+    "max_per_bank": 25000,
+    "max_negative_per_group_per_bank": 1000,
+    "max_word_tokens": 256,
+    "max_span_width": 24,
+    "target_split_ratios": [
+      0.8,
+      0.1,
+      0.1
+    ]
+  },
+  "code_sha256": {
+    "scripts/prepare_transaction_training_data.py": "d211a0886a9c32cb7927ed57a9b91dbd9252926d54aff15795105a3004f693c7",
+    "scripts/transaction_labels/__init__.py": "35007ff20e910d98391e519d18b8a33bc4e0b9bbe1db80fcc5ee61e8af1f1419",
+    "scripts/transaction_labels/other_banks.py": "3fc9bb236e27f5905602f222704a375c144fa65060f61126fb85920cf49a1a01",
+    "scripts/transaction_labels/rajhi_alinma.py": "c92b2a678dbe76af83754c68fed9af9664bb69dc62a56e44bbddfa9ec8d87e7f",
+    "scripts/transaction_labels/signals.py": "6bb8cfeffe744186f19e3d7121eb0c740f17ea1f0bc7b7ff899a1f26702766b8",
+    "scripts/transaction_labels/snb_riyad.py": "566a42405f3934833a7102bc560676b87d08c796901f5d25cf7db23697a51e01"
+  },
+  "file_sha256": {
+    "README.md": "da272108c9ece5251240f68b4fc58993b116c7c9695f63dccedc63dd59b6775c",
+    "annotation_sample.jsonl": "788a7b17e57413dd11f7e5b3eda4c0ca2e97fad2dc5d255a7d968631a007d54c",
+    "quality_report.json": "5090f5d1e1e632890930bab1223dc1043f97c1607e76db51630e5b5f368dda90",
+    "review.jsonl": "dceeed6f736da4513c7c74a1fb8e2d1640c50c3ccd114707dc696351b2df11fa",
+    "review_clusters.jsonl": "94c3ed2746a0160d1ea944d26695a8dfd514c8bff20d51fc351e67d92ddb140d",
+    "review_sample.jsonl": "53d60dcf1fb5684511668e766ce73d7e8ee560e423630bac38c136dbd43de8c4",
+    "source_accounting.jsonl": "d364adc1d38d63c5a0830094f9cb4435833ea923d7954fbe79927f3d43ffc146",
+    "test.audit.jsonl": "2ea30090112ba8b98adac9f083316319b2bb57e88ec9488a9d37341e1e74ec8b",
+    "test.json": "64c1f4c3df3358ebcfafd76f2040ee9fa948bb5a107c9690565e7607faaf0599",
+    "test.jsonl": "8426f1722d763e99ddc0fbe0437205ef0f2407892763ed7ac12fbd6635341f52",
+    "train.audit.jsonl": "ca631963ceb40094421691bc0ff75a5fba78cc716bd01a44a0e9fd9c5d99d3b9",
+    "train.json": "8b8ddf0527e9876791fb53685760a43d69c7ec7593a22052ff38435c41f8e5cb",
+    "train.jsonl": "2adaf5b4bce7ee8b473bcfda18691521b8d0d170d163ef266fc3eea2de1ff325",
+    "validation.audit.jsonl": "dd2c17e7065ae3c831ef73bac62664f8120d34f1a26e28c11bb4dfe8cbf5c0fb",
+    "validation.json": "d7f2575a6ae7a1efc24fc5a74e7f9280bdfe794c9d7dc15baa355d9bfe9e7699",
+    "validation.jsonl": "9a09f4029a9c8b9c2d64723077c671625516cce3e5f77804a11d64aa49a787c3"
+  }
+}

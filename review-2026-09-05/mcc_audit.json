@@ -1,0 +1,128 @@
+{
+  "category_rows": 55,
+  "unique_codes": 1027,
+  "ambiguous_code_count": 26,
+  "ambiguities": {
+    "6012": [
+      "Bank fees",
+      "Car Loan",
+      "Credit card",
+      "Emergency fund",
+      "Financial services",
+      "Other income",
+      "Salary",
+      "Student loan"
+    ],
+    "6051": [
+      "Bank fees",
+      "Credit card",
+      "Financial services",
+      "Investment & Stocks"
+    ],
+    "6536": [
+      "Bank fees",
+      "Money transfers"
+    ],
+    "6537": [
+      "Bank fees",
+      "Money transfers"
+    ],
+    "6540": [
+      "Bank fees",
+      "Money transfers"
+    ],
+    "6513": [
+      "Car Loan",
+      "House loan",
+      "Rent"
+    ],
+    "5812": [
+      "Coffeeshops",
+      "Delivery Apps",
+      "Restaurants"
+    ],
+    "5814": [
+      "Coffeeshops",
+      "Delivery Apps",
+      "Restaurants"
+    ],
+    "8211": [
+      "College / Schools",
+      "Student loan"
+    ],
+    "8299": [
+      "College / Schools",
+      "Educational Subscriptions"
+    ],
+    "4215": [
+      "Delivery Apps",
+      "Shipping / Delivery"
+    ],
+    "5811": [
+      "Delivery Apps",
+      "Restaurants"
+    ],
+    "5734": [
+      "Educational Subscriptions",
+      "Electronics",
+      "Games",
+      "Technology expenses"
+    ],
+    "4900": [
+      "Electricity invoice",
+      "Gas",
+      "Water invoice"
+    ],
+    "5045": [
+      "Electronics",
+      "Technology expenses"
+    ],
+    "5732": [
+      "Electronics",
+      "Technology expenses"
+    ],
+    "5735": [
+      "Electronics",
+      "Entertainment Subscriptions"
+    ],
+    "4829": [
+      "Emergency fund",
+      "Money transfers",
+      "Other income",
+      "Salary"
+    ],
+    "4899": [
+      "Entertainment Subscriptions",
+      "Telephone and internet"
+    ],
+    "7994": [
+      "Entertainment Subscriptions",
+      "Games"
+    ],
+    "6211": [
+      "Financial services",
+      "Investment & Stocks"
+    ],
+    "4511": [
+      "Flight Tickets",
+      "Shipping / Delivery"
+    ],
+    "9222": [
+      "Government fees",
+      "Traffic Violations"
+    ],
+    "9399": [
+      "Government fees",
+      "Traffic Violations"
+    ],
+    "7997": [
+      "Hobbies",
+      "Sports expenses"
+    ],
+    "4816": [
+      "Technology expenses",
+      "Telephone and internet"
+    ]
+  },
+  "resolution": "Later rows overwrite earlier rows"
+}

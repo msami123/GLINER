@@ -1,0 +1,1132 @@
+{
+  "scope": "All rows in root transaction JSON files, full Big Data JSONL, and all GLINER dataset splits. Heuristic flags are review candidates, not measured labeling error rates.",
+  "files": {
+    "20,715 prod test.json": {
+      "rows": 20676,
+      "banks": {
+        "7": 64,
+        "5": 10331,
+        "4": 4189,
+        "1": 4249,
+        "3": 1368,
+        "13": 399,
+        "6": 57,
+        "11": 19
+      },
+      "nonempty_fields": {
+        "TransactionInformation": 19890,
+        "TransactionType": 3781,
+        "SubTransactionType": 3781,
+        "CreditDebitIndicator": 20676,
+        "MerchantName": 18999,
+        "ProprietaryBankTransactionCode": 20676,
+        "bank_id": 20676,
+        "txn_id": 20676,
+        "MerchantCategoryCode": 2019
+      },
+      "unique_issue": 13692,
+      "classified_count": 0,
+      "category_counts": {},
+      "classification_sources": {},
+      "classification_match_types": {}
+    },
+    "20715-prod-classified.json": {
+      "rows": 3177,
+      "banks": {
+        "5": 852,
+        "4": 1010,
+        "7": 44,
+        "1": 671,
+        "3": 246,
+        "13": 354
+      },
+      "nonempty_fields": {
+        "TransactionInformation": 2947,
+        "TransactionType": 2947,
+        "SubTransactionType": 2947,
+        "CreditDebitIndicator": 3177,
+        "MerchantName": 2617,
+        "merchant_name_en": 1712,
+        "merchant_used": 3177,
+        "classification": 3177,
+        "ProprietaryBankTransactionCode": 3177,
+        "bank_id": 3177,
+        "txn_id": 3177,
+        "MerchantCategoryCode": 1672,
+        "merchant_name_ar": 659
+      },
+      "unique_issue": 1997,
+      "classified_count": 3177,
+      "category_counts": {
+        "Restaurants": 442,
+        "Public transports": 129,
+        "Groceries": 258,
+        "Pharmacy": 42,
+        "Delivery Apps": 175,
+        "Donations": 26,
+        "Fuel/e-charging": 80,
+        "Cash": 72,
+        "Money transfers": 1145,
+        "Hospital / Clinics": 38,
+        "Wallet Recharge": 77,
+        "Coffeeshops": 179,
+        "Household repairs": 29,
+        "Electricity invoice": 8,
+        "Telephone and internet": 61,
+        "College / Schools": 1,
+        "Gifts": 19,
+        "Parking fees": 14,
+        "Cosmetics / Perfuming": 34,
+        "Clothes / Accessories": 74,
+        "Laundry": 32,
+        "Movies": 10,
+        "Technology expenses": 37,
+        "Cinema": 1,
+        "Vehicle purchase/Maintenance": 14,
+        "Traffic Violations": 7,
+        "Events / Concerts": 3,
+        "Insurance": 4,
+        "Haircut / Salon": 20,
+        "Government fees": 12,
+        "Hobbies": 2,
+        "Bookstore": 4,
+        "Financial services": 11,
+        "Hotels / Resorts": 13,
+        "Water invoice": 15,
+        "Furniture": 12,
+        "Savings": 1,
+        "Entertainment Subscriptions": 5,
+        "Credit card": 27,
+        "Flight Tickets": 17,
+        "Pet food": 1,
+        "Student loan": 9,
+        "Salary": 4,
+        "Games": 5,
+        "Shipping / Delivery": 2,
+        "Stationery Store": 1,
+        "Sports expenses": 3,
+        "Rent": 1,
+        "Electronics": 1
+      },
+      "classification_sources": {
+        "API": 1477,
+        "MCC": 612,
+        "KSAOB_TRANSACTION_TYPE": 1088
+      },
+      "classification_match_types": {
+        "substring": 796,
+        "mcc": 612,
+        "context_strong": 252,
+        "exact_full": 429,
+        "ksaob_bank_transfer": 1088
+      }
+    },
+    "20715-prod-result.json": {
+      "rows": 20676,
+      "banks": {
+        "7": 64,
+        "5": 10331,
+        "4": 4189,
+        "1": 4249,
+        "3": 1368,
+        "13": 399,
+        "6": 57,
+        "11": 19
+      },
+      "nonempty_fields": {
+        "TransactionInformation": 19890,
+        "TransactionType": 3781,
+        "SubTransactionType": 3781,
+        "CreditDebitIndicator": 20676,
+        "MerchantName": 18999,
+        "ProprietaryBankTransactionCode": 20676,
+        "bank_id": 20676,
+        "txn_id": 20676,
+        "merchant_name_en": 2290,
+        "merchant_used": 3177,
+        "classification": 3177,
+        "MerchantCategoryCode": 2019,
+        "merchant_name_ar": 714,
+        "error": 2
+      },
+      "unique_issue": 13692,
+      "classified_count": 3177,
+      "category_counts": {
+        "Restaurants": 442,
+        "Public transports": 129,
+        "Groceries": 258,
+        "Pharmacy": 42,
+        "Delivery Apps": 175,
+        "Donations": 26,
+        "Fuel/e-charging": 80,
+        "Cash": 72,
+        "Money transfers": 1145,
+        "Hospital / Clinics": 38,
+        "Wallet Recharge": 77,
+        "Coffeeshops": 179,
+        "Household repairs": 29,
+        "Electricity invoice": 8,
+        "Telephone and internet": 61,
+        "College / Schools": 1,
+        "Gifts": 19,
+        "Parking fees": 14,
+        "Cosmetics / Perfuming": 34,
+        "Clothes / Accessories": 74,
+        "Laundry": 32,
+        "Movies": 10,
+        "Technology expenses": 37,
+        "Cinema": 1,
+        "Vehicle purchase/Maintenance": 14,
+        "Traffic Violations": 7,
+        "Events / Concerts": 3,
+        "Insurance": 4,
+        "Haircut / Salon": 20,
+        "Government fees": 12,
+        "Hobbies": 2,
+        "Bookstore": 4,
+        "Financial services": 11,
+        "Hotels / Resorts": 13,
+        "Water invoice": 15,
+        "Furniture": 12,
+        "Savings": 1,
+        "Entertainment Subscriptions": 5,
+        "Credit card": 27,
+        "Flight Tickets": 17,
+        "Pet food": 1,
+        "Student loan": 9,
+        "Salary": 4,
+        "Games": 5,
+        "Shipping / Delivery": 2,
+        "Stationery Store": 1,
+        "Sports expenses": 3,
+        "Rent": 1,
+        "Electronics": 1
+      },
+      "classification_sources": {
+        "API": 1477,
+        "MCC": 612,
+        "KSAOB_TRANSACTION_TYPE": 1088
+      },
+      "classification_match_types": {
+        "substring": 796,
+        "mcc": 612,
+        "context_strong": 252,
+        "exact_full": 429,
+        "ksaob_bank_transfer": 1088
+      }
+    },
+    "20715-prod-unclassified.json": {
+      "rows": 17499,
+      "banks": {
+        "7": 20,
+        "4": 3179,
+        "5": 9479,
+        "3": 1122,
+        "1": 3578,
+        "13": 45,
+        "6": 57,
+        "11": 19
+      },
+      "nonempty_fields": {
+        "TransactionInformation": 16943,
+        "TransactionType": 834,
+        "SubTransactionType": 834,
+        "CreditDebitIndicator": 17499,
+        "MerchantName": 16382,
+        "ProprietaryBankTransactionCode": 17499,
+        "bank_id": 17499,
+        "txn_id": 17499,
+        "merchant_name_en": 578,
+        "MerchantCategoryCode": 347,
+        "merchant_name_ar": 55,
+        "error": 2
+      },
+      "unique_issue": 11921,
+      "classified_count": 0,
+      "category_counts": {},
+      "classification_sources": {},
+      "classification_match_types": {}
+    },
+    "prod-transactions-with-types-results.json": {
+      "rows": 3781,
+      "banks": {
+        "7": 62,
+        "5": 1277,
+        "4": 1132,
+        "1": 524,
+        "3": 387,
+        "13": 399
+      },
+      "nonempty_fields": {
+        "TransactionInformation": 3779,
+        "TransactionType": 3781,
+        "SubTransactionType": 3781,
+        "CreditDebitIndicator": 3781,
+        "MerchantName": 3028,
+        "ProprietaryBankTransactionCode": 3781,
+        "bank_id": 3781,
+        "txn_id": 3781,
+        "merchant_name_en": 2290,
+        "merchant_used": 2947,
+        "classification": 2947,
+        "MerchantCategoryCode": 1664,
+        "merchant_name_ar": 713,
+        "error": 2
+      },
+      "unique_issue": 2673,
+      "classified_count": 2947,
+      "category_counts": {
+        "Restaurants": 377,
+        "Public transports": 123,
+        "Groceries": 220,
+        "Pharmacy": 39,
+        "Delivery Apps": 137,
+        "Donations": 20,
+        "Fuel/e-charging": 68,
+        "Cash": 72,
+        "Money transfers": 1144,
+        "Hospital / Clinics": 34,
+        "Wallet Recharge": 63,
+        "Coffeeshops": 166,
+        "Household repairs": 28,
+        "Electricity invoice": 8,
+        "Telephone and internet": 57,
+        "College / Schools": 1,
+        "Gifts": 18,
+        "Parking fees": 14,
+        "Cosmetics / Perfuming": 31,
+        "Clothes / Accessories": 69,
+        "Laundry": 31,
+        "Movies": 10,
+        "Technology expenses": 35,
+        "Cinema": 1,
+        "Vehicle purchase/Maintenance": 14,
+        "Traffic Violations": 6,
+        "Events / Concerts": 3,
+        "Insurance": 4,
+        "Haircut / Salon": 20,
+        "Government fees": 11,
+        "Hobbies": 2,
+        "Bookstore": 4,
+        "Financial services": 7,
+        "Hotels / Resorts": 13,
+        "Water invoice": 15,
+        "Furniture": 11,
+        "Savings": 1,
+        "Entertainment Subscriptions": 4,
+        "Credit card": 27,
+        "Flight Tickets": 17,
+        "Pet food": 1,
+        "Student loan": 6,
+        "Salary": 4,
+        "Shipping / Delivery": 1,
+        "Stationery Store": 1,
+        "Sports expenses": 3,
+        "Rent": 1,
+        "Games": 4,
+        "Electronics": 1
+      },
+      "classification_sources": {
+        "API": 1311,
+        "MCC": 548,
+        "KSAOB_TRANSACTION_TYPE": 1088
+      },
+      "classification_match_types": {
+        "substring": 663,
+        "mcc": 548,
+        "context_strong": 219,
+        "exact_full": 429,
+        "ksaob_bank_transfer": 1088
+      }
+    },
+    "prod-transactions-with-types-unclassified-834.json": {
+      "rows": 834,
+      "banks": {
+        "7": 18,
+        "4": 122,
+        "5": 425,
+        "3": 141,
+        "1": 83,
+        "13": 45
+      },
+      "nonempty_fields": {
+        "TransactionInformation": 832,
+        "TransactionType": 834,
+        "SubTransactionType": 834,
+        "CreditDebitIndicator": 834,
+        "MerchantName": 641,
+        "ProprietaryBankTransactionCode": 834,
+        "bank_id": 834,
+        "txn_id": 834,
+        "merchant_name_en": 578,
+        "MerchantCategoryCode": 222,
+        "merchant_name_ar": 54,
+        "error": 2
+      },
+      "unique_issue": 679,
+      "classified_count": 0,
+      "category_counts": {},
+      "classification_sources": {},
+      "classification_match_types": {}
+    }
+  },
+  "splits": {
+    "train": {
+      "examples": 6563,
+      "negative_examples": 0,
+      "span_count": 7603,
+      "span_width_over_12": 5,
+      "max_span_width": 20,
+      "max_word_tokens": 85,
+      "banks": {
+        "5": 3200,
+        "4": 1931,
+        "13": 61,
+        "3": 329,
+        "1": 1017,
+        "7": 32,
+        "6": 40,
+        "11": 3
+      },
+      "primary_banks": {
+        "5": 3169,
+        "4": 1930,
+        "13": 47,
+        "3": 329,
+        "1": 1017,
+        "7": 28,
+        "6": 40,
+        "11": 3
+      },
+      "languages": {
+        "english": 5265,
+        "mixed": 1288,
+        "arabic": 10
+      },
+      "normalized_text_unique": 6546,
+      "raw_word_splitting_differs_from_gliner_0_2_28": 5040,
+      "gold_spans_not_aligned_to_gliner_raw_word_boundaries": 109
+    },
+    "validation": {
+      "examples": 820,
+      "negative_examples": 0,
+      "span_count": 946,
+      "span_width_over_12": 0,
+      "max_span_width": 12,
+      "max_word_tokens": 82,
+      "banks": {
+        "4": 241,
+        "5": 399,
+        "3": 41,
+        "1": 127,
+        "13": 9,
+        "6": 5,
+        "7": 3,
+        "11": 1
+      },
+      "primary_banks": {
+        "4": 241,
+        "5": 396,
+        "3": 41,
+        "1": 127,
+        "13": 6,
+        "6": 5,
+        "7": 3,
+        "11": 1
+      },
+      "languages": {
+        "mixed": 162,
+        "english": 653,
+        "arabic": 5
+      },
+      "normalized_text_unique": 820,
+      "raw_word_splitting_differs_from_gliner_0_2_28": 640,
+      "gold_spans_not_aligned_to_gliner_raw_word_boundaries": 21,
+      "normalized_text_seen_in_train": 4,
+      "numeric_reference_template_seen_in_train": 317,
+      "all_signals_seen_in_train": 444,
+      "at_least_one_signal_seen_in_train": 449
+    },
+    "test": {
+      "examples": 820,
+      "negative_examples": 0,
+      "span_count": 948,
+      "span_width_over_12": 1,
+      "max_span_width": 17,
+      "max_word_tokens": 77,
+      "banks": {
+        "4": 241,
+        "5": 399,
+        "1": 127,
+        "3": 41,
+        "13": 9,
+        "11": 1,
+        "7": 4,
+        "6": 5
+      },
+      "primary_banks": {
+        "4": 241,
+        "5": 396,
+        "1": 127,
+        "3": 41,
+        "13": 6,
+        "11": 1,
+        "7": 3,
+        "6": 5
+      },
+      "languages": {
+        "english": 655,
+        "mixed": 164,
+        "arabic": 1
+      },
+      "normalized_text_unique": 818,
+      "raw_word_splitting_differs_from_gliner_0_2_28": 621,
+      "gold_spans_not_aligned_to_gliner_raw_word_boundaries": 22,
+      "normalized_text_seen_in_train": 3,
+      "numeric_reference_template_seen_in_train": 327,
+      "all_signals_seen_in_train": 429,
+      "at_least_one_signal_seen_in_train": 434
+    }
+  },
+  "split_overlap_examples": [
+    {
+      "split": "validation",
+      "held_out": "التحويل الوارد سريع من بنك الانماء-قسم الحوالات من خلال من خلال البنك العربي الوطني تاريخ الاستحقاق 07/18/2026 رقم الايبان SA7430400190095493580018 المحول SULAF ALOTAIBI المبلغ 150.00 رقم المرجع       FT26199SGDPQ رقم الحوالة SA7430400190095493580018 الساعة 1714 الغرض تفاصيل الدفع",
+      "train": "التحويل الوارد سريع من بنك الانماء-قسم الحوالات من خلال من خلال البنك العربي الوطني تاريخ الاستحقاق 06/24/2026 رقم الايبان SA7430400190095493580018 المحول SULAF ALOTAIBI المبلغ 100.00 رقم المرجع       FT261756KS11 رقم الحوالة SA7430400190095493580018 الساعة 0059 الغرض تفاصيل الدفع",
+      "signals": [
+        {
+          "text": "التحويل الوارد",
+          "start_char": 0,
+          "end_char": 14,
+          "start_token": 0,
+          "end_token": 1,
+          "sources": [
+            "engine_action"
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "held_out": "(1598877201414528-605622008398) Our home instant laund RIYADH SA",
+      "train": "(1598877201414528-606223008550) Our home instant laund RIYADH SA",
+      "signals": [
+        {
+          "text": "Our home instant laund",
+          "start_char": 32,
+          "end_char": 54,
+          "start_token": 5,
+          "end_token": 8,
+          "sources": [
+            "MerchantName"
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "held_out": "Salary Deposit from /SA1820000003000138519940 6952246 (6952246) through Alinma Bank -payment department - riyadh- Value date 04/30/2026 Reference number   MLT26120077177 UTI number RIBLBTM2611907JA for purpose PAYROLL Sender Bank :RIBLSARIAXXX Sama ref    Currency SAR Amount 12599.05 at 0300",
+      "train": "Salary Deposit from /SA1820000003000138519940 6952246 (6952246) through Alinma Bank -payment department - riyadh- Value date 04/01/2026 Reference number   MLT26091077733 UTI number RIBLBTM260890976 for purpose PAYROLL Sender Bank :RIBLSARIAXXX Sama ref    Currency SAR Amount 12663.71 at 0142",
+      "signals": [
+        {
+          "text": "Salary Deposit",
+          "start_char": 0,
+          "end_char": 14,
+          "start_token": 0,
+          "end_token": 1,
+          "sources": [
+            "MerchantName",
+            "engine_action"
+          ]
+        },
+        {
+          "text": "PAYROLL",
+          "start_char": 210,
+          "end_char": 217,
+          "start_token": 33,
+          "end_token": 33,
+          "sources": [
+            "engine_action"
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "held_out": "(1562145804092343-609923001857) Alou Breakfast MADINA SA",
+      "train": "(1562145804092343-609900001843) Alou Breakfast MADINA SA",
+      "signals": [
+        {
+          "text": "Alou Breakfast",
+          "start_char": 32,
+          "end_char": 46,
+          "start_token": 5,
+          "end_token": 6,
+          "sources": [
+            "MerchantName"
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "held_out": "Purchase from account   8000 8 SAR from LAMA ALTHKYA in 25-05-2026 08:56AM Value Date Reference LAMA ALTHKYA QUNFOTHAH SA Rate Commission",
+      "train": "Purchase from account   8000 15 SAR from LAMA ALTHKYA in 27-05-2026 02:19AM Value Date Reference LAMA ALTHKYA QUNFOTHAH SA Rate Commission",
+      "signals": [
+        {
+          "text": "LAMA ALTHKYA",
+          "start_char": 40,
+          "end_char": 52,
+          "start_token": 7,
+          "end_token": 8,
+          "sources": [
+            "bank4_text_filter"
+          ]
+        },
+        {
+          "text": "LAMA ALTHKYA",
+          "start_char": 96,
+          "end_char": 108,
+          "start_token": 21,
+          "end_token": 22,
+          "sources": [
+            "bank4_text_filter"
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "held_out": "(8198275272254567-607603000312) IBRAHIM WASIL ZAGZOOG JEDDAH SA",
+      "train": "(8198275272254567-608201000394) IBRAHIM WASIL ZAGZOOG JEDDAH SA",
+      "signals": [
+        {
+          "text": "IBRAHIM WASIL ZAGZOOG",
+          "start_char": 32,
+          "end_char": 53,
+          "start_token": 5,
+          "end_token": 7,
+          "sources": [
+            "MerchantName"
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "held_out": "(1653029701300001-032817001744) HALA RIYADH SA",
+      "train": "(1653001301300001-030623000875) HALA RIYADH SA",
+      "signals": [
+        {
+          "text": "HALA",
+          "start_char": 32,
+          "end_char": 36,
+          "start_token": 5,
+          "end_token": 5,
+          "sources": [
+            "MerchantName"
+          ]
+        }
+      ]
+    },
+    {
+      "split": "validation",
+      "held_out": "(6448622964486229-606001555310) AlDima Laundry RIYADH SA",
+      "train": "(6448622964486229-605401465723) AlDima Laundry RIYADH SA",
+      "signals": [
+        {
+          "text": "AlDima Laundry",
+          "start_char": 32,
+          "end_char": 46,
+          "start_token": 5,
+          "end_token": 6,
+          "sources": [
+            "MerchantName"
+          ]
+        }
+      ]
+    }
+  ],
+  "detailed_by_bank": {
+    "7": {
+      "rows": 64,
+      "empty_issue": 0,
+      "classification_nonnull": 44,
+      "both_types_empty": 2,
+      "both_types_empty_but_text": 2
+    },
+    "5": {
+      "rows": 10331,
+      "empty_issue": 12,
+      "classification_nonnull": 852,
+      "both_types_empty": 9054,
+      "both_types_empty_but_text": 9042
+    },
+    "4": {
+      "rows": 4189,
+      "empty_issue": 0,
+      "classification_nonnull": 1010,
+      "both_types_empty": 3057,
+      "both_types_empty_but_text": 3057
+    },
+    "1": {
+      "rows": 4249,
+      "empty_issue": 761,
+      "classification_nonnull": 671,
+      "both_types_empty": 3725,
+      "both_types_empty_but_text": 2966
+    },
+    "3": {
+      "rows": 1368,
+      "empty_issue": 0,
+      "classification_nonnull": 246,
+      "both_types_empty": 981,
+      "both_types_empty_but_text": 981
+    },
+    "13": {
+      "rows": 399,
+      "empty_issue": 0,
+      "classification_nonnull": 354,
+      "both_types_empty": 0,
+      "both_types_empty_but_text": 0
+    },
+    "6": {
+      "rows": 57,
+      "empty_issue": 0,
+      "classification_nonnull": 0,
+      "both_types_empty": 57,
+      "both_types_empty_but_text": 57
+    },
+    "11": {
+      "rows": 19,
+      "empty_issue": 13,
+      "classification_nonnull": 0,
+      "both_types_empty": 19,
+      "both_types_empty_but_text": 6
+    }
+  },
+  "bank_issuers": {
+    "7": {
+      "": 64
+    },
+    "5": {
+      "SARJHI": 1278,
+      "": 9053
+    },
+    "4": {
+      "Alinma": 1132,
+      "": 3057
+    },
+    "1": {
+      "SAUDI NATIONAL BANK": 524,
+      "": 3725
+    },
+    "3": {
+      "": 1368
+    },
+    "13": {
+      "BSFRSARI": 399
+    },
+    "6": {
+      "": 57
+    },
+    "11": {
+      "": 19
+    }
+  },
+  "same_issue_different_merchant_or_mcc": 164,
+  "ambiguous_short_issue_examples": [
+    {
+      "issue_normalized": "bill payment",
+      "distinct_merchant_mcc_pairs": 2,
+      "examples": [
+        [
+          "BILL PAYMENT",
+          ""
+        ],
+        [
+          "SA",
+          ""
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "hungerstation llc",
+      "distinct_merchant_mcc_pairs": 4,
+      "examples": [
+        [
+          "",
+          "5814"
+        ],
+        [
+          "HUNGERSTATION LLC",
+          ""
+        ],
+        [
+          "HUNGERSTATION LLC",
+          "5814"
+        ],
+        [
+          "HUNGERSTATION LLC~~RIYADH~00000        682",
+          ""
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "keeta",
+      "distinct_merchant_mcc_pairs": 4,
+      "examples": [
+        [
+          "",
+          "5814"
+        ],
+        [
+          "KEETA",
+          ""
+        ],
+        [
+          "Keeta",
+          ""
+        ],
+        [
+          "Keeta",
+          "5814"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "saudi electricity comp",
+      "distinct_merchant_mcc_pairs": 4,
+      "examples": [
+        [
+          "",
+          "4900"
+        ],
+        [
+          "SAUDI ELECTRICITY CO",
+          ""
+        ],
+        [
+          "SAUDI ELECTRICITY COMP",
+          ""
+        ],
+        [
+          "SAUDI ELECTRICITY COMP",
+          "4900"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "mobily",
+      "distinct_merchant_mcc_pairs": 3,
+      "examples": [
+        [
+          "",
+          "4814"
+        ],
+        [
+          "MOBILY",
+          ""
+        ],
+        [
+          "Mobily",
+          "4814"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "dar alhekma university",
+      "distinct_merchant_mcc_pairs": 2,
+      "examples": [
+        [
+          "DAR ALHEKMA UNIVERSITY",
+          ""
+        ],
+        [
+          "DAR ALHEKMA UNIVERSITY",
+          "8220"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "danube",
+      "distinct_merchant_mcc_pairs": 2,
+      "examples": [
+        [
+          "DANUBE",
+          ""
+        ],
+        [
+          "DANUBE",
+          "5411"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "riyadh parking",
+      "distinct_merchant_mcc_pairs": 2,
+      "examples": [
+        [
+          "Riyadh Parking",
+          ""
+        ],
+        [
+          "Riyadh Parking",
+          "7372"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "mrsool",
+      "distinct_merchant_mcc_pairs": 4,
+      "examples": [
+        [
+          "MRSOOL",
+          ""
+        ],
+        [
+          "MRSOOL",
+          "4214"
+        ],
+        [
+          "MRSOOL",
+          "4215"
+        ],
+        [
+          "MRSOOL",
+          "5814"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "french bakery",
+      "distinct_merchant_mcc_pairs": 2,
+      "examples": [
+        [
+          "FRENCH BAKERY",
+          ""
+        ],
+        [
+          "FRENCH BAKERY",
+          "5462"
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "express food company w",
+      "distinct_merchant_mcc_pairs": 3,
+      "examples": [
+        [
+          "",
+          "5814"
+        ],
+        [
+          "EXPRESS FOOD COMPANY W",
+          "5814"
+        ],
+        [
+          "Express Food Company",
+          ""
+        ]
+      ]
+    },
+    {
+      "issue_normalized": "keemart",
+      "distinct_merchant_mcc_pairs": 4,
+      "examples": [
+        [
+          "",
+          "5814"
+        ],
+        [
+          "KEEMART",
+          ""
+        ],
+        [
+          "Keemart",
+          "5411"
+        ],
+        [
+          "Keemart",
+          "5814"
+        ]
+      ]
+    }
+  ],
+  "typed_results_overlap": {
+    "typed_rows": 3781,
+    "txn_ids_also_in_detailed": 3781
+  },
+  "audit_flags": {
+    "excluded_descriptions": 60,
+    "brand_channel_cases": 1083,
+    "full_issue_labeled": 721,
+    "context_only_spans": 140,
+    "keyword_only_spans": 161,
+    "labeled_noise_candidates": 30,
+    "city_inside_signal_candidates": 101,
+    "long_digits_inside_signal": 48,
+    "span_width_over_12": 6
+  },
+  "big_data": {
+    "counts": {
+      "rows": 387408,
+      "empty_issue": 0,
+      "exact_issue_in_detailed": 13639,
+      "exact_issue_in_training_audit": 8155,
+      "over_384_word_tokens": 0,
+      "max_word_tokens": 120,
+      "short_issue": 21357,
+      "channel_present": 69275,
+      "numeric_only": 3929,
+      "brand_as_merchant": 1285,
+      "cash_withdrawal": 880,
+      "unique_exact_issues": 387408,
+      "unique_normalized_issues": 387408,
+      "numeric_reference_templates": 157967
+    },
+    "keys": {
+      "issue": 387408,
+      "issue_hash": 387408,
+      "chunk": 387408,
+      "status": 387408
+    },
+    "languages": {
+      "mixed": 129148,
+      "english": 245374,
+      "arabic": 8957,
+      "neither": 3929
+    },
+    "examples": {
+      "short_issue": [
+        "m",
+        "عزيمه",
+        ": 300002512",
+        ": 400114841",
+        ": 500226684",
+        ". Card Delivery Fee",
+        ". Credit Profit",
+        ". Disclaimer Letter Charges"
+      ],
+      "channel_present": [
+        "المتفوقين7820 ALMUTAFAWIQIN 7 CITY:JEDH682016JED ***2930 MADA RIYADH MCC-5912 Charges:              0.00",
+        "بساط          BISAT CITY:0000682016SAM ***0327 MADA RIYADH MCC-5499 Charges:              0.00",
+        "بساط          BISAT CITY:0000682016SAM ***1396 MADA RIYADH MCC-5499 Charges:              0.00",
+        "بساط          BISAT CITY:0000682016SAM ***2918 MADA RIYADH MCC-5499 Al Rajhi Bank Charges:              0.00",
+        "بساط          BISAT CITY:0000682016SAM ***5076 MADA RIYADH MCC-5499 Charges:              0.00",
+        "شركة القافلة اGulf Caravan Tr CITY:0000682016SAM ***4649 MADA TAIF MCC-5411 Charges:              0.00",
+        "ميد مطار نجرانMEED NAJRAN AIR CITY:0000682016SAM ***9110 MADA TAIF MCC-5814 Charges:              0.00",
+        "-1006-ميد تخصصيMEED 1006 - Tak CITY:0000682016SAM ***9976 MADA RIYADH Charges:              0.00"
+      ],
+      "numeric_only": [
+        ": 300002512",
+        ": 400114841",
+        ": 500226684",
+        "(010201 -000000110462)",
+        "************************************************** 0000062500190001",
+        "************************************************** 0000111001002704",
+        "************************************************** 0000111001204541",
+        "************************************************** 0000111003839838"
+      ],
+      "brand_as_merchant": [
+        "(8144624301299957-505611004525) Two Apple Company RIYADH SA",
+        "(8144624301299957-516911006612) Two Apple Company RIYADH SA",
+        "(8144624301299957-523711007906) Two Apple Company RIYADH SA",
+        "(8144624301299957-524210008048) Two Apple Company RIYADH SA",
+        "(8144628801299956-505001004872) Two Apple Company RIYADH SA",
+        "(8144628801299956-505310004891) Two Apple Company RIYADH SA",
+        "(8144628801299956-511800005944) Two Apple Company RIYADH SA",
+        "(8144628801299956-512000005986) Two Apple Company RIYADH SA"
+      ],
+      "cash_withdrawal": [
+        "ANB CARDHOLDERS ON SPAN ATM CASH WITHDRAWAL 8888.004083.0000.0915.1850.15-09-2024 RIYADH AL RAJHI B",
+        "ATM Cash Withdrawal",
+        "ATM Cash Withdrawal From Al Amri Station (SA-RIYADH) by Mada Card  7739 For      Amount SAR 1200 AT 09:57PM Value Dated 04-03-2025",
+        "ATM Cash Withdrawal From Al Dana Market Dammam (SA-DAMMAM )(Mada) AmountSAR 1500 AT 10:05AM Value Date 10-07-2024 Reference Number OP0301NL03056483-8505",
+        "ATM Cash Withdrawal From Al Eaidy Station (SA-RIYADH )(Mada) AmountSAR 400 AT    12:06AM Value Date 03-09-2024 Reference Number OP0101ND01055365-8778",
+        "ATM Cash Withdrawal From Al Inma Bank (SA-MAKKAH) by Mada Card  7448 For Amount  SAR 100 AT 08:24PM Value Dated 19-06-2025",
+        "ATM Cash Withdrawal From Al Inma Bank (SA-RIYADH) by Mada Card  5748 For Amount  SAR 200 AT 05:18PM Value Dated 31-05-2025",
+        "ATM Cash Withdrawal From Al Inma Bank (SA-RIYADH) by Mada Card  8175 For Amount  SAR 100 AT 04:43PM Value Dated 30-05-2025"
+      ]
+    },
+    "top_numeric_templates": [
+      [
+        "(<ref> -<num>) agmt <num> ehsan riyadh sa",
+        4338
+      ],
+      [
+        "w#<num>-<num> -<num>",
+        3116
+      ],
+      [
+        "<num> <num> <num>-<num>",
+        2480
+      ],
+      [
+        "w -/<num>-<num>-<num>",
+        1406
+      ],
+      [
+        "t<num> inst. <num> loan <num> <ref>",
+        1163
+      ],
+      [
+        "w - visa/mastercard : advance payment - <num> - <num>",
+        1118
+      ],
+      [
+        "تحويل الى الاهل والاصدقاء <num> ben id:<num>",
+        1094
+      ],
+      [
+        "<ref> تحويل إلى رقم <num> ، فى <num>:<num>-<num>/<num>/<num> رقم المرجع",
+        923
+      ],
+      [
+        "تحويل الى الاهل والاصدقاء <num> chnl:snb payment systems dep id:<num>",
+        912
+      ],
+      [
+        "w-/toacct/<ref>-",
+        907
+      ],
+      [
+        "w-/toacct/<num>toمحمد-",
+        766
+      ],
+      [
+        "advance payment <num>-<num>-<num>",
+        712
+      ],
+      [
+        "w-/fracct/<num>frمحمد",
+        691
+      ],
+      [
+        "(<num>-<num>) aldrees <num> riyadh sa",
+        667
+      ],
+      [
+        "تحويل الى الاهل والاصدقاء <num>",
+        656
+      ]
+    ]
+  },
+  "pull_checkpoint": {
+    "status": "completed",
+    "next_chunk": 388,
+    "last_chunk": 387,
+    "unique_records": 387408,
+    "fetched_records": 387458,
+    "duplicate_records": 50,
+    "has_more": false,
+    "completed": true,
+    "updated_at": "2026-09-01T15:58:41.536281+00:00"
+  },
+  "limitations": [
+    "No human-verified category ground truth or complete local keyword dictionary was found.",
+    "No GPU fine-tuning or trained-checkpoint quality benchmark performed.",
+    "Bank identity in Big Data cannot be established because no bank_id/issuer is stored.",
+    "All records scanned programmatically; semantic inspection is sampled, not human adjudication of every row."
+  ]
+}
